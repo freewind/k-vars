@@ -1,4 +1,4 @@
-Kotlin Hello World Demo
-=======================
+Kotlin Observable Var Demo
+==========================
 
-Hello world from kotlin. Open it in IDE and run `Hello.kt`
+实现一个简单的`Observable`，以及相应的用于生成一个新的Observable的`map`方法
