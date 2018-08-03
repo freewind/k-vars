@@ -1,4 +1,4 @@
-package github.freewind.kotlin.kvars
+package github.freewind.kotlin.kvweb.kvars
 
 typealias Listener<T> = (T) -> Unit
 
@@ -27,6 +27,17 @@ class Var<T>(initValue: T) {
             k.set(fn(v))
         }
         return k
+    }
+}
+
+class Vars<T>(initValue: List<T>) {
+    private var _value = initValue
+
+    private val listeners = mutableListOf<Listener<T>>()
+
+    fun addListener(listener: Listener<T>) {
+        this.listeners.add(listener)
+        this._value.forEach { listener(it) }
     }
 
 }

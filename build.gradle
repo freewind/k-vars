@@ -8,11 +8,13 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'freewind.github.com:gradle-kotlin-js-bundler-plugin:0.1.0'
     }
 }
 
 apply plugin: 'kotlin2js'
 apply plugin: 'maven'
+apply plugin: 'kotlin-js-bundler'
 
 group = "github.freewind"
 version = "0.1.0-SNAPSHOT"
@@ -20,6 +22,10 @@ version = "0.1.0-SNAPSHOT"
 compileKotlin2Js {
     kotlinOptions.sourceMap = true
     kotlinOptions.sourceMapEmbedSources = "always"
+}
+
+kotlinJsBundler {
+    outputFile = "${projectDir}/bundle.js"
 }
 
 repositories {
@@ -31,6 +37,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-html-js:0.6.10"
     compile "org.apache.commons:commons-lang3:3.7"
     compile "commons-io:commons-io:2.6"
     testCompile "junit:junit:4.11"
