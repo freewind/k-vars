@@ -18,14 +18,17 @@ class Var<T>(initValue: T) {
 
     fun addListener(listener: Listener<T>) {
         this.listeners.add(listener)
-        listener(_value)
+        listener(this._value)
     }
 
-    fun get() = _value
+    fun get() = this._value
 
     fun set(value: T) {
-        _value = value
-        listeners.forEach { it(value) }
+        val changed = this._value != value
+        this._value = value
+        if (changed) {
+            listeners.forEach { it(value) }
+        }
     }
 
     fun <K> map(fn: (T) -> K): Var<K> {
