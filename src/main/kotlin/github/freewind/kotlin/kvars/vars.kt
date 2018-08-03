@@ -1,14 +1,4 @@
-package example
-
-fun main(args: Array<String>) {
-    val name = Var("kotlin")
-    val nameLength = name.map { it.length }
-
-    name.addListener { v -> println("newName: $v") }
-    nameLength.addListener { v -> println("newNameLength: $v") }
-
-    name.set("kotlin-changed")
-}
+package github.freewind.kotlin.kvars
 
 typealias Listener<T> = (T) -> Unit
 

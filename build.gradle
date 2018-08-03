@@ -11,7 +11,16 @@ buildscript {
     }
 }
 
-apply plugin: 'kotlin'
+apply plugin: 'kotlin2js'
+apply plugin: 'maven'
+
+group = "github.freewind"
+version = "0.1.0-SNAPSHOT"
+
+compileKotlin2Js {
+    kotlinOptions.sourceMap = true
+    kotlinOptions.sourceMapEmbedSources = "always"
+}
 
 repositories {
     mavenLocal()
@@ -21,13 +30,10 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
     compile "org.apache.commons:commons-lang3:3.7"
     compile "commons-io:commons-io:2.6"
     testCompile "junit:junit:4.11"
     testCompile 'org.assertj:assertj-core:3.9.0'
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
-
-// gradle wrapper --gradle-version 4.8.1
-// ./gradlew -version
